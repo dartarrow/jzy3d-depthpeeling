@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/trials"/>
+	<classpathentry kind="src" path="src/api"/>
+	<classpathentry kind="src" path="src/library"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.jzy3d-api"/>
+	<classpathentry kind="output" path="build/eclipse"/>
+</classpath>
