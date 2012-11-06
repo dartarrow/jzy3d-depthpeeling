@@ -338,12 +338,13 @@ public class GLSLProgram {
     }
     
     public void verifyLinkStatus(GL2 gl, int programId) {
-        int[] params = new int[] { 0 };
-        gl.glGetProgramiv(programId, GL2.GL_LINK_STATUS, params, 0);
-        gl.glGetProgramiv(programId, GL2.GL_INFO_LOG_LENGTH, params, 0);
-
-        if (params[0] != 1) {
-            warnLink(gl, readErrors(gl, programId), params);
+        int[] linkStatus = new int[] { 0 };
+        int[] logLength = new int[] { 0 };
+        gl.glGetProgramiv(programId, GL2.GL_LINK_STATUS, linkStatus, 0);
+        gl.glGetProgramiv(programId, GL2.GL_INFO_LOG_LENGTH, logLength, 0);
+        
+        if (linkStatus[0] != 1) {
+            warnLink(gl, readErrors(gl, programId), linkStatus[0], logLength[0]);
         }
     }
     
@@ -403,9 +404,9 @@ public class GLSLProgram {
 			warn(content, GLSLWarnType.UNDEFINED);
 	}
 	
-	protected void warnLink(GL2 gl, String error, int[] params) {
-		warn("link status: " + params[0], GLSLWarnType.UNDEFINED);
-		warn("log length: " + params[0], GLSLWarnType.UNDEFINED);
+	protected void warnLink(GL2 gl, String error, int linkStatus, int logLength) {
+		warn("link status: " + linkStatus, GLSLWarnType.UNDEFINED);
+		warn("log length: " + logLength, GLSLWarnType.UNDEFINED);
 		warn(error, GLSLWarnType.UNDEFINED);
 	}
     
