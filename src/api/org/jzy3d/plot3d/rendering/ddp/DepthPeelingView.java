@@ -8,7 +8,7 @@ import org.jzy3d.plot3d.rendering.canvas.ICanvas;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 import org.jzy3d.plot3d.rendering.scene.Scene;
 import org.jzy3d.plot3d.rendering.view.View;
-import org.jzy3d.plot3d.rendering.view.ViewPort;
+import org.jzy3d.plot3d.rendering.view.ViewportConfiguration;
 
 /**
  * {@link DepthPeelingRenderer3d} needs to split calls to view clear and view renderer.
@@ -44,7 +44,7 @@ public class DepthPeelingView extends View{
     protected int height = 0;
     
     public void renderPeeledView(GL2 gl, GLU glu){
-        updateCamera(gl, glu,  new ViewPort(width, height), computeScaling());
+        updateCamera(gl, glu,  new ViewportConfiguration(width, height), computeScaling());
 
         renderAxeBox(gl, glu);
         renderSceneGraph(gl, glu, false);  

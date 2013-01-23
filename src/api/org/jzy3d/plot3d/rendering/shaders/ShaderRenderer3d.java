@@ -8,7 +8,7 @@ import org.jzy3d.plot3d.primitives.IGLRenderer;
 import org.jzy3d.plot3d.rendering.view.Camera;
 import org.jzy3d.plot3d.rendering.view.Renderer3d;
 import org.jzy3d.plot3d.rendering.view.View;
-import org.jzy3d.plot3d.rendering.view.ViewPort;
+import org.jzy3d.plot3d.rendering.view.ViewportConfiguration;
 
 public class ShaderRenderer3d extends Renderer3d{
     protected IShaderable shaderable;
@@ -60,7 +60,7 @@ public class ShaderRenderer3d extends Renderer3d{
             
             // render scene
             view.updateQuality(gl);
-            view.updateCamera(gl, glu,  new ViewPort(width, height), view.computeScaling());
+            view.updateCamera(gl, glu,  new ViewportConfiguration(width, height), view.computeScaling());
         }
     }
     
