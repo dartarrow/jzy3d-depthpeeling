@@ -3,11 +3,12 @@ package org.jzy3d.plot3d.primitives.obj;
 import javax.media.opengl.GL2;
 import javax.media.opengl.glu.GLU;
 
+import org.jzy3d.io.IGLLoader;
 import org.jzy3d.plot3d.rendering.view.Camera;
 
-public class Jzy3dDrawableOBJFile extends RawDrawableOBJFile{
-    public Jzy3dDrawableOBJFile(String filename) {
-        super(filename);
+public class DrawableVBO extends AbstractDrawableVBO{
+    public DrawableVBO(IGLLoader<AbstractDrawableVBO> loader) {
+        super(loader);
     }
 
     public void draw(GL2 gl, GLU glu, Camera cam){

@@ -5,12 +5,13 @@ import java.awt.Rectangle;
 import org.jzy3d.chart.Chart;
 import org.jzy3d.chart.ChartLauncher;
 import org.jzy3d.colors.Color;
+import org.jzy3d.io.OBJFileLoader;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
 import org.jzy3d.plot3d.primitives.AbstractGeometry.PolygonMode;
 import org.jzy3d.plot3d.primitives.CompositeParallelepiped;
 import org.jzy3d.plot3d.primitives.CompositeParallelepiped.PolygonType;
-import org.jzy3d.plot3d.primitives.obj.Jzy3dDrawableOBJFile;
+import org.jzy3d.plot3d.primitives.obj.DrawableVBO;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 import org.jzy3d.plot3d.rendering.ddp.DepthPeelingChart;
 
@@ -20,7 +21,9 @@ public class PeeledDragonDemo {
         System.err.println("May require vm argument -Xmx1024m");
 
         Chart chart = DepthPeelingChart.get(Quality.Fastest, "awt");
-        chart.getScene().add(new Jzy3dDrawableOBJFile("models/dragon.obj"));
+
+        OBJFileLoader loader = new OBJFileLoader("models/dragon.obj");
+        chart.getScene().add(new DrawableVBO(loader));
         //chart.getScene().add(new Jzy3dDrawableOBJFile("models/bun_zipper.ply"));
         
         

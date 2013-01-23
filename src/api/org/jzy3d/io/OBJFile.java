@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.jzy3d.maths.BoundingBox3d;
+
 /**
  * Translated from C++ Version: nvModel.h - Model support class
  * 
@@ -270,9 +272,12 @@ public class OBJFile {
     /**
      * Returns the points defining the axis-aligned bounding box containing the model.
      */
-    public void computeBoundingBox(float[] minVal, float[] maxVal) {
+    public BoundingBox3d computeBoundingBox() {
+        float[] minVal = new float[3];
+        float[] maxVal = new float[3];
+        
         if (positions_.isEmpty())
-            return;
+            return null;
 
         for (int i = 0; i < 3; i++) {
             minVal[i] = 1e10f;
@@ -290,6 +295,8 @@ public class OBJFile {
             maxVal[1] = Math.max(maxVal[1], y);
             maxVal[2] = Math.max(maxVal[2], z);
         }
+        
+        return new BoundingBox3d(minVal[0], maxVal[0], minVal[1], maxVal[1], minVal[2], maxVal[2]);
     }
 
     public void clearNormals() {
@@ -334,7 +341,7 @@ public class OBJFile {
     }
 
     public int getIndexCount() {
-        return (int) pIndex_.size();
+        return pIndex_.size();
     }
 
     public FloatBuffer getCompiledVertices() {
@@ -359,10 +366,6 @@ public class OBJFile {
 
     public int getCompiledVertexCount() {
         return ((pIndex_.size() + nIndex_.size()) * 3);
-    }
-
-    public int getCompiledIndexCount() {
-        return pIndex_.size();
     }
 
     public int getOpenEdgeCount() {

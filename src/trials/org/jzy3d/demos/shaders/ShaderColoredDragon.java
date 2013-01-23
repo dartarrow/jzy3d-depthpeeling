@@ -1,9 +1,11 @@
 package org.jzy3d.demos.shaders;
 
-import org.jzy3d.plot3d.primitives.obj.Jzy3dDrawableOBJFile;
+import org.jzy3d.io.OBJFileLoader;
+import org.jzy3d.plot3d.primitives.obj.DrawableVBO;
 
 public class ShaderColoredDragon {
     public static void main(String[] args){
-        Jzy3dDrawableOBJFile j = new Jzy3dDrawableOBJFile("models/dragon.obj");
+        OBJFileLoader loader = new OBJFileLoader("models/dragon.obj");
+        DrawableVBO j = new DrawableVBO(loader);
     }
 }
