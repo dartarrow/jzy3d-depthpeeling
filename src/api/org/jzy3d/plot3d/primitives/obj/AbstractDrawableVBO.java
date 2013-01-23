@@ -26,11 +26,6 @@ import com.jogamp.common.nio.Buffers;
  */
 public class AbstractDrawableVBO extends AbstractDrawable implements IGLBindedResource{
     IGLLoader<AbstractDrawableVBO> loader;
-
-    //public float[] trans = new float[] { 0.0f, 0.0f, 0.0f };
-    //public float scale = 1.0f;
-    protected int[] arrayBufferName = new int[1]; // vbo (array buffer)
-    protected int[] elementArrayName = new int[1]; // indices (element array)
     
     protected int byteOffset;
     protected int normalOffset;
@@ -38,8 +33,8 @@ public class AbstractDrawableVBO extends AbstractDrawable implements IGLBindedRe
     protected int size;
     protected int pointer;
     
-    protected int arrayName = 0;//arrayBufferName[0];
-    protected int elementName = 0;//elementArrayName[0];
+    protected int arrayName = 0;
+    protected int elementName = 0;
     
     public AbstractDrawableVBO(IGLLoader<AbstractDrawableVBO> loader){
         this.loader = loader;
@@ -48,14 +43,6 @@ public class AbstractDrawableVBO extends AbstractDrawable implements IGLBindedRe
     // element array buffer is an index: 
     // @see http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/
     public void draw(GL2 gl, GLU glu, Camera cam) {
-        /*OBJFile obj = null;
-        byteOffset = obj.getCompiledVertexSize() * Buffers.SIZEOF_FLOAT;
-        normalOffset = obj.getCompiledNormalOffset() * Buffers.SIZEOF_FLOAT;
-        dimensions = obj.getPositionSize(); // byte offset, probably 0
-        size = obj.getCompiledIndexCount();
-        pointer = 0;*/
-        
-        
         if(hasMountedOnce)
             doDrawElements(gl);
     }
@@ -82,30 +69,6 @@ public class AbstractDrawableVBO extends AbstractDrawable implements IGLBindedRe
     public void mount(GL2 gl){
         loader.load(gl, this);
         hasMountedOnce = true;
-        /*
-        System.err.println("loading OBJ...\n");
-        obj = new OBJFile();
-        obj.loadModelFromFile(filename);
-        System.err.println("compiling mesh...\n");
-        obj.compileModel();
-        System.err.println(obj.getPositionCount() + " vertices");
-        System.err.println((obj.getIndexCount() / 3) + " triangles");
-        int totalVertexSize = obj.getCompiledVertexCount() * Buffers.SIZEOF_FLOAT;
-        int totalIndexSize = obj.getCompiledIndexCount() * Buffers.SIZEOF_INT;
-        int arrayName = arrayBufferName[0];
-        int elementName = elementArrayName[0];
-        
-
-        FloatBuffer vertices = obj.getCompiledVertices();
-        IntBuffer indices = obj.getCompiledIndices();
-        
-        doLoadBuffers(gl, totalVertexSize, totalIndexSize, arrayName, elementName, vertices, indices);
-
-        
-        //float[] diag = new float[] { modelMax[0] - modelMin[0], modelMax[1] - modelMin[1], modelMax[2] - modelMin[2] };
-        //scale = (float) (1.0 / Math.sqrt(diag[0] * diag[0] + diag[1] * diag[1] + diag[2] * diag[2]) * 1.5);
-        //trans = new float[] { (float) (-scale * (modelMin[0] + 0.5 * diag[0])), (float) (-scale * (modelMin[1] + 0.5 * diag[1])), (float) (-scale * (modelMin[2] + 0.5 * diag[2])) };
-        doSetBoundingBox(obj.computeBoundingBox());*/
     }
     
     public void doConfigure(int arrayName, int elementName, int byteOffset, int normalOffset, int dimensions, int size, int pointer){
@@ -115,7 +78,7 @@ public class AbstractDrawableVBO extends AbstractDrawable implements IGLBindedRe
         this.byteOffset = byteOffset;
         this.normalOffset = normalOffset;
         this.dimensions = dimensions;
-        this.size = size;
+        this.size = size; // 2 614 242
         this.pointer = pointer;
     }
 
