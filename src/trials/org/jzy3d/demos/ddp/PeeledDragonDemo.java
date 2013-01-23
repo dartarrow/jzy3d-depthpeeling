@@ -11,7 +11,7 @@ import org.jzy3d.maths.Coord3d;
 import org.jzy3d.plot3d.primitives.AbstractGeometry.PolygonMode;
 import org.jzy3d.plot3d.primitives.CompositeParallelepiped;
 import org.jzy3d.plot3d.primitives.CompositeParallelepiped.PolygonType;
-import org.jzy3d.plot3d.primitives.obj.DrawableVBO;
+import org.jzy3d.plot3d.primitives.vbo.DrawableVBO;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 import org.jzy3d.plot3d.rendering.ddp.DepthPeelingChart;
 
