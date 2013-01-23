@@ -9,5 +9,5 @@ import org.jzy3d.plot3d.primitives.AbstractDrawable;
  * @author Martin Pernollet
  */
 public interface IGLLoader<T extends AbstractDrawable> {
-    public void load(GL2 gl, T drawable);
+    public void load(GL2 gl, T drawable) throws Exception;
 }

@@ -1,4 +1,4 @@
-package org.jzy3d.io;
+package org.jzy3d.io.glsl;
 
 import static javax.media.opengl.GL2.GL_OBJECT_INFO_LOG_LENGTH_ARB;
 

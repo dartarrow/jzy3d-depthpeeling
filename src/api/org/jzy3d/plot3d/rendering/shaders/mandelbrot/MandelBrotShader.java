@@ -2,8 +2,8 @@ package org.jzy3d.plot3d.rendering.shaders.mandelbrot;
 
 import javax.media.opengl.GL2;
 
-import org.jzy3d.io.GLSLProgram;
-import org.jzy3d.io.ShaderFilePair;
+import org.jzy3d.io.glsl.GLSLProgram;
+import org.jzy3d.io.glsl.ShaderFilePair;
 import org.jzy3d.plot3d.rendering.shaders.Shaderable;
 
 public class MandelBrotShader extends Shaderable{

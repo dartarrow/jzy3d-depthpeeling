@@ -1,4 +1,4 @@
-package org.jzy3d.io;
+package org.jzy3d.io.obj;
 
 import java.io.BufferedReader;
 import java.io.File;

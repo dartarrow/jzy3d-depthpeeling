@@ -3,8 +3,8 @@ package org.jzy3d.plot3d.rendering.ddp.algorithms;
 import javax.media.opengl.GL2;
 import javax.media.opengl.glu.GLU;
 
-import org.jzy3d.io.GLSLProgram;
-import org.jzy3d.io.ShaderFilePair;
+import org.jzy3d.io.glsl.GLSLProgram;
+import org.jzy3d.io.glsl.ShaderFilePair;
 import org.jzy3d.plot3d.rendering.ddp.IDepthPeelingAlgorithm;
 
 

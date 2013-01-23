@@ -1,4 +1,4 @@
-package org.jzy3d.io;
+package org.jzy3d.io.glsl;
 
 import java.io.InputStream;
 import java.net.URL;

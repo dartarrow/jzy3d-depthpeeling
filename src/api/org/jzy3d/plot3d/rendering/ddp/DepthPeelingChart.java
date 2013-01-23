@@ -5,8 +5,8 @@ import javax.media.opengl.GLProfile;
 
 import org.jzy3d.chart.Chart;
 import org.jzy3d.chart.factories.IChartComponentFactory;
-import org.jzy3d.io.GLSLProgram;
-import org.jzy3d.io.GLSLProgram.Strictness;
+import org.jzy3d.io.glsl.GLSLProgram;
+import org.jzy3d.io.glsl.GLSLProgram.Strictness;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 import org.jzy3d.plot3d.rendering.ddp.algorithms.PeelingMethod;
 

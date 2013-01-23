@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import org.jzy3d.chart.Chart;
 import org.jzy3d.chart.ChartLauncher;
 import org.jzy3d.colors.Color;
-import org.jzy3d.io.OBJFileLoader;
+import org.jzy3d.io.obj.OBJFileLoader;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
 import org.jzy3d.plot3d.primitives.AbstractGeometry.PolygonMode;
@@ -41,7 +41,5 @@ public class PeeledDragonDemo {
         p1.setWireframeColor(wireframe);
         p1.setWireframeDisplayed(true);
         chart.getScene().add(p1);
-    }
-
-    
+    }    
 }
