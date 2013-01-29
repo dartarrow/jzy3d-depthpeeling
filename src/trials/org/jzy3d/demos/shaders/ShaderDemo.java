@@ -12,8 +12,8 @@ import org.jzy3d.chart.factories.IChartComponentFactory;
 import org.jzy3d.colors.Color;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
-import org.jzy3d.plot3d.primitives.CompositeParallelepiped;
-import org.jzy3d.plot3d.primitives.CompositeParallelepiped.PolygonType;
+import org.jzy3d.plot3d.primitives.ParallelepipedComposite;
+import org.jzy3d.plot3d.primitives.ParallelepipedComposite.PolygonType;
 import org.jzy3d.plot3d.primitives.Cylinder;
 import org.jzy3d.plot3d.primitives.LineStrip;
 import org.jzy3d.plot3d.primitives.Point;
@@ -56,7 +56,7 @@ public class ShaderDemo {
     
     public static void createStack(Chart chart, float width, float height, float position, Color face, Color wireframe) {
         BoundingBox3d bounds = new BoundingBox3d(-width/2, width/2, -width/2, width/2, position-height/2, position+height/2);
-        CompositeParallelepiped p1 = new CompositeParallelepiped(bounds, PolygonType.SIMPLE);
+        ParallelepipedComposite p1 = new ParallelepipedComposite(bounds, PolygonType.SIMPLE);
         p1.setColor(face);
         p1.setWireframeColor(wireframe);
         p1.setWireframeDisplayed(false);
@@ -80,7 +80,7 @@ public class ShaderDemo {
 
     public static void createStack(Chart chart, int width, int height, int position, Color face, Color wireframe) {
         BoundingBox3d bounds = new BoundingBox3d(-width/2, width/2, -width/2, width/2, position-height/2, position+height/2);
-        CompositeParallelepiped p1 = new CompositeParallelepiped(bounds);
+        ParallelepipedComposite p1 = new ParallelepipedComposite(bounds);
         p1.setColor(face);
         p1.setWireframeColor(wireframe);
         chart.getScene().add(p1);

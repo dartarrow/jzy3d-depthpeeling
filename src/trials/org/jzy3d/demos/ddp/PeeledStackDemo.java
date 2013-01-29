@@ -7,7 +7,7 @@ import org.jzy3d.chart.ChartLauncher;
 import org.jzy3d.colors.Color;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
-import org.jzy3d.plot3d.primitives.CompositeParallelepiped;
+import org.jzy3d.plot3d.primitives.ParallelepipedComposite;
 import org.jzy3d.plot3d.primitives.Cylinder;
 import org.jzy3d.plot3d.primitives.LineStrip;
 import org.jzy3d.plot3d.primitives.Point;
@@ -60,7 +60,7 @@ public class PeeledStackDemo {
 
     public static void createStack(Chart chart, int width, int height, int position, Color face, Color wireframe) {
         BoundingBox3d bounds = new BoundingBox3d(-width/2, width/2, -width/2, width/2, position-height/2, position+height/2);
-        CompositeParallelepiped p1 = new CompositeParallelepiped(bounds);
+        ParallelepipedComposite p1 = new ParallelepipedComposite(bounds);
         p1.setColor(face);
         p1.setWireframeColor(wireframe);
         chart.getScene().add(p1);

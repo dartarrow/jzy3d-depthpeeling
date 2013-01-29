@@ -8,8 +8,8 @@ import org.jzy3d.colors.Color;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
 import org.jzy3d.plot3d.primitives.AbstractGeometry.PolygonMode;
-import org.jzy3d.plot3d.primitives.CompositeParallelepiped;
-import org.jzy3d.plot3d.primitives.CompositeParallelepiped.PolygonType;
+import org.jzy3d.plot3d.primitives.ParallelepipedComposite;
+import org.jzy3d.plot3d.primitives.ParallelepipedComposite.PolygonType;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 import org.jzy3d.plot3d.rendering.ddp.DepthPeelingChart;
 import org.jzy3d.plot3d.rendering.ddp.algorithms.PeelingMethod;
@@ -44,7 +44,7 @@ public class PeeledCubesDemo {
     
     public static void createStack(Chart chart, float width, float height, Coord3d position, Color face, Color wireframe) {
         BoundingBox3d bounds = new BoundingBox3d(position.x-width/2, position.x+width/2, position.y-width/2, position.y+width/2, position.z-height/2, position.z+height/2);
-        CompositeParallelepiped p1 = new CompositeParallelepiped(bounds, PolygonType.SIMPLE);
+        ParallelepipedComposite p1 = new ParallelepipedComposite(bounds, PolygonType.SIMPLE);
         p1.setPolygonMode(PolygonMode.FRONT_AND_BACK);
         p1.setPolygonOffsetFill(true);
         p1.setColor(face);

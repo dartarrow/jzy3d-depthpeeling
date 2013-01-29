@@ -6,6 +6,7 @@ import javax.media.opengl.glu.GLU;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.plot3d.primitives.AbstractDrawable;
 import org.jzy3d.plot3d.rendering.view.Camera;
+import org.jzy3d.plot3d.transform.Transform;
 
 // equivalent épuré de DrawableTexture
 public class TexSurface extends AbstractDrawable{
@@ -16,8 +17,7 @@ public class TexSurface extends AbstractDrawable{
     
     @Override
     public void draw(GL2 gl, GLU glu, Camera cam) {
-        if(transform!=null)
-            transform.execute(gl);
+        doTransform(gl, glu, cam);
         // Reset the current matrix to the "identity"
         gl.glLoadIdentity();
 
@@ -43,5 +43,15 @@ public class TexSurface extends AbstractDrawable{
 
         // Flush all drawing operations to the graphics card
         gl.glFlush();
+    }
+
+    @Override
+    public void applyGeometryTransform(Transform transform) {
+        //throw new RuntimeException("not implemented");
+    }
+
+    @Override
+    public void updateBounds() {
+        //throw new RuntimeException("not implemented");
     }
 }
