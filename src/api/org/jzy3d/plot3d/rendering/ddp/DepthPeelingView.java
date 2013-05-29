@@ -1,6 +1,6 @@
 package org.jzy3d.plot3d.rendering.ddp;
 
-import javax.media.opengl.GL2;
+import javax.media.opengl.GL;
 import javax.media.opengl.glu.GLU;
 
 import org.jzy3d.chart.factories.IChartComponentFactory;
@@ -22,7 +22,7 @@ public class DepthPeelingView extends View{
         super(factory, scene, canvas, quality);
     }
 
-    public void clearPeeledView(GL2 gl, GLU glu, int width, int height){
+    public void clearPeeledView(GL gl, GLU glu, int width, int height){
      // decompose super.display, i.e. prevent to render scenegraph now,
         // and delegate to peeling algorithm
         synchronized(this){
@@ -43,7 +43,7 @@ public class DepthPeelingView extends View{
     protected int width = 0;
     protected int height = 0;
     
-    public void renderPeeledView(GL2 gl, GLU glu){
+    public void renderPeeledView(GL gl, GLU glu){
         updateCamera(gl, glu,  new ViewportConfiguration(width, height), computeScaling());
 
         renderAxeBox(gl, glu);

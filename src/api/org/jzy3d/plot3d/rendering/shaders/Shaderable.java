@@ -1,5 +1,6 @@
 package org.jzy3d.plot3d.rendering.shaders;
 
+import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.glu.GLU;
 
@@ -66,7 +67,7 @@ public class Shaderable implements IShaderable{
 
     IGLRenderer tasksToRender = new IGLRenderer() {
         @Override
-        public void draw(GL2 gl, GLU glu, Camera cam) {
+        public void draw(GL gl, GLU glu, Camera cam) {
             throw new RuntimeException("nothing to render?!");
         }
     };

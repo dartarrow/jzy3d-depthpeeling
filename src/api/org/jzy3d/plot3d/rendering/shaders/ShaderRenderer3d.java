@@ -1,5 +1,6 @@
 package org.jzy3d.plot3d.rendering.shaders;
 
+import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.glu.GLU;
@@ -73,7 +74,7 @@ public class ShaderRenderer3d extends Renderer3d{
     public static IGLRenderer getShaderContentRenderer(final View view){
         return new IGLRenderer() {
             @Override
-            public void draw(GL2 gl, GLU glu, Camera camera) {
+            public void draw(GL gl, GLU glu, Camera camera) {
                 view.renderSceneGraph(gl, glu, true);  
             }
         };

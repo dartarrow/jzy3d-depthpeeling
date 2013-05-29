@@ -3,6 +3,7 @@ package org.jzy3d.plot3d.rendering.ddp;
 import java.io.File;
 import java.net.URL;
 
+import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.glu.GLU;
 
@@ -73,7 +74,7 @@ public abstract class AbstractDepthPeelingAlgorithm implements IDepthPeelingAlgo
     
     IGLRenderer tasksToRender = new IGLRenderer() {
         @Override
-        public void draw(GL2 gl, GLU glu, Camera cam) {
+        public void draw(GL gl, GLU glu, Camera cam) {
             throw new RuntimeException("nothing to render?!");
         }
     };

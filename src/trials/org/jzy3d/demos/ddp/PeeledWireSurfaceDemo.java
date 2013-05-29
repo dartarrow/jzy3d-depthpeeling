@@ -1,7 +1,5 @@
 package org.jzy3d.demos.ddp;
 
-import java.awt.Dimension;
-
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 
@@ -13,6 +11,7 @@ import org.jzy3d.colors.ColorMapper;
 import org.jzy3d.colors.colormaps.ColorMapRainbow;
 import org.jzy3d.io.glsl.GLSLProgram;
 import org.jzy3d.io.glsl.GLSLProgram.Strictness;
+import org.jzy3d.maths.Dimension;
 import org.jzy3d.maths.Range;
 import org.jzy3d.plot3d.builder.Builder;
 import org.jzy3d.plot3d.builder.Mapper;
@@ -21,7 +20,7 @@ import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 import org.jzy3d.plot3d.rendering.ddp.PeelingComponentFactory;
 import org.jzy3d.plot3d.rendering.ddp.algorithms.PeelingMethod;
-import org.jzy3d.plot3d.rendering.legends.colorbars.ColorbarLegend;
+import org.jzy3d.plot3d.rendering.legends.colorbars.AWTColorbarLegend;
 
 
 public class PeeledWireSurfaceDemo {
@@ -61,7 +60,7 @@ public class PeeledWireSurfaceDemo {
         chart.getScene().getGraph().add(surface);
 
         // Setup a colorbar 
-        ColorbarLegend cbar = new ColorbarLegend(surface, chart.getView().getAxe().getLayout());
+        AWTColorbarLegend cbar = new AWTColorbarLegend(surface, chart.getView().getAxe().getLayout());
         cbar.setMinimumSize(new Dimension(100, 600));
         surface.setLegend(cbar);
         

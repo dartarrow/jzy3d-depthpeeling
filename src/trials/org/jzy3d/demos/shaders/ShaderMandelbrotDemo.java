@@ -1,16 +1,16 @@
 package org.jzy3d.demos.shaders;
 
-import java.awt.Rectangle;
-
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 
 import org.jzy3d.chart.Chart;
 import org.jzy3d.chart.ChartLauncher;
-import org.jzy3d.chart.factories.ChartComponentFactory;
+import org.jzy3d.chart.factories.AWTChartComponentFactory;
 import org.jzy3d.chart.factories.IChartComponentFactory;
+import org.jzy3d.maths.Dimension;
+import org.jzy3d.maths.Rectangle;
 import org.jzy3d.plot3d.rendering.canvas.CanvasAWT;
-import org.jzy3d.plot3d.rendering.canvas.CanvasNewt;
+import org.jzy3d.plot3d.rendering.canvas.CanvasNewtAwt;
 import org.jzy3d.plot3d.rendering.canvas.CanvasSwing;
 import org.jzy3d.plot3d.rendering.canvas.ICanvas;
 import org.jzy3d.plot3d.rendering.canvas.OffscreenCanvas;
@@ -39,27 +39,32 @@ public class ShaderMandelbrotDemo {
     
     
     public static Chart initChart(final IShaderable s) {
-    	IChartComponentFactory factory = new ChartComponentFactory(){
+    	IChartComponentFactory factory = new AWTChartComponentFactory(){
     		public Renderer3d newRenderer(View view, boolean traceGL, boolean debugGL){
                 ShaderRenderer3d r = new ShaderRenderer3d(view, traceGL, debugGL, new Shaderable());
                 return r;
             }
     		
-    		public ICanvas newCanvas(Scene scene, Quality quality, String chartType, GLCapabilities capabilities){
-    	        if("awt".compareTo(chartType)==0){
-    	            CanvasAWT c = new CanvasAWT(this, scene, quality, capabilities);
-    	            c.setAutoSwapBufferMode(CHART_CANVAS_AUTOSWAP);
-    	            return c;
-    	        }
-    	        else if("newt".compareTo(chartType)==0)
-    	            return new CanvasNewt(this, scene, quality, capabilities);
-    	        else if("swing".compareTo(chartType)==0)
-    	            return new CanvasSwing(this, scene, quality, capabilities);
-    	        else if("offscreen".compareTo(chartType)==0)
-    	            return new OffscreenCanvas(this, scene, quality, GLProfile.getDefault(), 500, 500);
-    	        else
-    	            throw new RuntimeException("unknown chart type:" + chartType);
-    	    }
+    		@Override
+            protected ICanvas initializeCanvas(Scene scene, Quality quality, String windowingToolkit, GLCapabilities capabilities, boolean traceGL, boolean debugGL) {
+                Toolkit chartType = getToolkit(windowingToolkit);
+                switch (chartType) {
+                case awt:{
+                    CanvasAWT c = new CanvasAWT(this, scene, quality, capabilities);
+                    c.setAutoSwapBufferMode(CHART_CANVAS_AUTOSWAP);
+                    return c;
+                }
+                case swing:
+                    return new CanvasSwing(this, scene, quality, capabilities, traceGL, debugGL);
+                case newt:
+                    return new CanvasNewtAwt(this, scene, quality, capabilities, traceGL, debugGL);
+                case offscreen:
+                    Dimension dimension = getCanvasDimension(windowingToolkit);
+                    return new OffscreenCanvas(this, scene, quality, capabilities, dimension.width, dimension.height, traceGL, debugGL);
+                default:
+                    throw new RuntimeException("unknown chart type:" + chartType);
+                }
+            }
     	};
         
         GLProfile profile = GLProfile.getMaxProgrammable(true);
