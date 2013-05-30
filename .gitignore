@@ -1,7 +1,9 @@
 dist
 build
 doc/javadoc
+target
 .settings
+
 *.class
 *.log
 *~/
@@ -10,4 +12,4 @@ doc/javadoc
 *.war
 *.ear
 
-/target
+
