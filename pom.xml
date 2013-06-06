@@ -8,7 +8,7 @@
     <!--<version>0.9.1-SNAPSHOT</version>-->
     <parent>
         <groupId>org.jzy3d</groupId>
-        <artifactId>jzy3d-master</artifactId>
+        <artifactId>jzy3d-extensions</artifactId>
         <version>0.9.1-SNAPSHOT</version>
     </parent>
 
