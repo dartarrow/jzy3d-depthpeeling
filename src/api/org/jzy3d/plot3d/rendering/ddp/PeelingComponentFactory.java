@@ -33,45 +33,6 @@ public class PeelingComponentFactory extends AWTChartComponentFactory{
         return new DepthPeelingView(this, scene, canvas, quality);
     }
 	
-	/*public ICanvas newCanvas(Scene scene, Quality quality, String chartType, GLCapabilities capabilities){
-        if("awt".compareTo(chartType)==0){
-            CanvasAWT c = new CanvasAWT(this, scene, quality, capabilities);
-            c.setAutoSwapBufferMode(CHART_CANVAS_AUTOSWAP);
-            return c;
-        }
-        else if("newt".compareTo(chartType)==0)
-            return new CanvasNewt(this, scene, quality, capabilities);
-        else if("swing".compareTo(chartType)==0)
-            return new CanvasSwing(this, scene, quality, capabilities);
-        else if("offscreen".compareTo(chartType)==0){
-            Dimension dimension = getCanvasDimension(windowingToolkit);
-            return new OffscreenCanvas(this, scene, quality, capabilities, dimension.width, dimension.height, traceGL, debugGL);
-        }
-        else
-            throw new RuntimeException("unknown chart type:" + chartType);
-    }*/
-	
-	@Override
-	protected ICanvas initializeCanvas(Scene scene, Quality quality, String windowingToolkit, GLCapabilities capabilities, boolean traceGL, boolean debugGL) {
-        Toolkit chartType = getToolkit(windowingToolkit);
-        switch (chartType) {
-        case awt:{
-            CanvasAWT c = new CanvasAWT(this, scene, quality, capabilities);
-            c.setAutoSwapBufferMode(CHART_CANVAS_AUTOSWAP);
-            return c;
-        }
-        case swing:
-            return new CanvasSwing(this, scene, quality, capabilities, traceGL, debugGL);
-        case newt:
-            return new CanvasNewtAwt(this, scene, quality, capabilities, traceGL, debugGL);
-        case offscreen:
-            Dimension dimension = getCanvasDimension(windowingToolkit);
-            return new OffscreenCanvas(this, scene, quality, capabilities, dimension.width, dimension.height, traceGL, debugGL);
-        default:
-            throw new RuntimeException("unknown chart type:" + chartType);
-        }
-    }
-	
     public static boolean CHART_CANVAS_AUTOSWAP = false;
 
 	PeelingMethod method;
